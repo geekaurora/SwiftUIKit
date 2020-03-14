@@ -4,6 +4,7 @@ import SwiftUI
  https://stackoverflow.com/questions/56496638/activity-indicator-in-swiftui
  
  ### Usage
+ 
  struct ContentView: View {
 
      var body: some View {
@@ -30,12 +31,11 @@ public struct ActivityIndicator: UIViewRepresentable {
   }
 }
 
-public struct LoadingView<Content>: View where Content: View {
-  
+public struct LoadingView<Content>: View where Content: View {  
   public typealias ContentBlock = () -> Content
   
   @State
-  public var isShowing: Bool = true
+  public var isShowing: Bool = false
   public var content: ContentBlock?
   
   public init(isShowing: Bool, content: @escaping () -> Content) {
