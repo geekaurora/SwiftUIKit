@@ -8,6 +8,7 @@ import SwiftUI
  struct ContentView: View {
 
      var body: some View {
+         // LoadingView(isShowing: $feedListState.isLoading) {
          LoadingView(isShowing: .constant(true)) {
              NavigationView {
                  List(["1", "2", "3", "4", "5"], id: \.self) { row in
@@ -34,20 +35,20 @@ public struct ActivityIndicator: UIViewRepresentable {
 public struct LoadingView<Content>: View where Content: View {  
   public typealias ContentBlock = () -> Content
   
-  @State
-  public var isShowing: Bool = false
-  public var content: ContentBlock?
+  @Binding
+  public var isShowing: Bool
+  public var content: ContentBlock
   
-  public init(isShowing: Bool, content: @escaping () -> Content) {
-    self.content = content
-    self.isShowing = isShowing
-  }
+//  public init(isShowing: Bool, content: @escaping () -> Content) {
+//    self.content = content
+//    self.isShowing = isShowing
+//  }
     
   public var body: some View {
     GeometryReader { geometry in
       ZStack(alignment: .center) {
         
-        self.content?()
+        self.content()
           .disabled(self.isShowing)
           .blur(radius: self.isShowing ? 3 : 0)
         
