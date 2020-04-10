@@ -8,6 +8,8 @@ import SwiftUI
    public var diffId = UUID()
    public var isLiked: Bool { didSet { updateDiffId() } }
  }
+ 
+ In List, `ForEach(feeds, id: \.diffId)`.
  */
 public protocol ListDiffable {
   /// Diffable id be used for List identifierable.
@@ -20,6 +22,6 @@ public protocol ListDiffable {
 public extension ListDiffable {
   /// Updates `diffId` to trigger list reload.
   mutating func updateDiffId() {
-    self.diffId = UUID()
+    diffId = UUID()
   }
 }

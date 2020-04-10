@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C3A3D3D1243F22A7001D9BFE /* ListDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3D3D0243F22A7001D9BFE /* ListDiffable.swift */; };
+		C3D67EA02440618C008A54ED /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D67E9F2440618C008A54ED /* Styles.swift */; };
 		DF94EB942415FEC500630182 /* SwiftUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF94EB8A2415FEC500630182 /* SwiftUIKit.framework */; };
 		DF94EB992415FEC500630182 /* SwiftUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94EB982415FEC500630182 /* SwiftUIKitTests.swift */; };
 		DF94EB9B2415FEC500630182 /* SwiftUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DF94EB8D2415FEC500630182 /* SwiftUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		C3A3D3D0243F22A7001D9BFE /* ListDiffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDiffable.swift; sourceTree = "<group>"; };
+		C3D67E9F2440618C008A54ED /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		DF94EB8A2415FEC500630182 /* SwiftUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF94EB8D2415FEC500630182 /* SwiftUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIKit.h; sourceTree = "<group>"; };
 		DF94EB8E2415FEC500630182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				C3A3D3D0243F22A7001D9BFE /* ListDiffable.swift */,
+				C3D67E9F2440618C008A54ED /* Styles.swift */,
 				DF94EBA42415FEDD00630182 /* View+.swift */,
 				DF94EB8D2415FEC500630182 /* SwiftUIKit.h */,
 				DF94EB8E2415FEC500630182 /* Info.plist */,
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3D67EA02440618C008A54ED /* Styles.swift in Sources */,
 				C3A3D3D1243F22A7001D9BFE /* ListDiffable.swift in Sources */,
 				DF94EBA52415FEDD00630182 /* View+.swift in Sources */,
 			);
