@@ -25,18 +25,10 @@ public extension ListDiffable where Self: Codable {
   }
 }
 
-//public protocol ListDiffable {
-//  /// Diffable id be used for List identifierable.
-//  var diffId: UUID { get set }
-//
-//  /// Updates `diffId` to trigger list cell reload.
-//  mutating func updateDiffId()
-//}
-//
-//public extension ListDiffable {
-//  /// Updates `diffId` to trigger list reload.
-//  mutating func updateDiffId() {
-//    diffId = UUID()
-//  }
-//}
-
+/// Protocol composed of `Codable` and `ListDiffable`.
+///
+/// - Note:
+///
+/// With `Coable` extension, `diffId` will be automatically implemented with the string retrived from all member
+/// variables of `self`, which is efficient for diffing with respect to `self` property changes.
+public typealias ListDiffCodable = Codable & ListDiffable
