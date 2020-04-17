@@ -1,13 +1,16 @@
 import CZUtils
 
 /**
- Alternative protocol of List `Identifierable`, which doesn't require `id` prop that possiblity conflicts with model prop.
+ Alternative protocol of List `Identifierable`, it requires `diffId` instead of `id` which possiblity conflicts with model prop.
  
- - Note:
- For instances which conform to `Codable`, `diffId` will automatically be implemented with the string retrived from
- all member variables of `self`, which is efficient for diffing.
+ -  Note:
+ For instances which conform to `Codable`, `diffId` will be automatically implemented with the string retrived from
+ all member variables of `self`, which is efficient for diffing with respect to `self` property changes.
  
- In List, `ForEach(feeds, id: \.diffId)`.
+ ### Usage
+ 
+ In List, use `\.diffId` after list identifier:
+ `ForEach(feeds, id: \.diffId)`.
  */
 public protocol ListDiffable {
   /// Diffable id be used for List identifierable.
@@ -16,7 +19,7 @@ public protocol ListDiffable {
 
 public extension ListDiffable where Self: Codable {
   /// In Codable extension, `description` returns `self` dictionary version corresponding to
-  /// all member variables of `self`, which is efficient for diffing.
+  /// all member variables of `self`, which is efficient for diffing with respect to `self` property changes.
   var diffId: String {
     return description
   }
