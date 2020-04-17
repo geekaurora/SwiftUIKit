@@ -13,7 +13,7 @@ import SwiftUI
  */
 public protocol ListDiffable {
   /// Diffable id be used for List identifierable.
-  var diffId: UUID { get set}
+  var diffId: UUID { get set }
   
   /// Updates `diffId` to trigger list cell reload.
   mutating func updateDiffId()
@@ -25,3 +25,4 @@ public extension ListDiffable {
     diffId = UUID()
   }
 }
+
