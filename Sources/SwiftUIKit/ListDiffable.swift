@@ -1,3 +1,4 @@
+import Foundation
 import CZUtils
 
 /**
@@ -21,7 +22,7 @@ public extension ListDiffable where Self: Codable {
   /// In Codable extension, `description` returns `self` dictionary version corresponding to
   /// all member variables of `self`, which is efficient for diffing with respect to `self` property changes.
   var diffId: String {
-    return description
+    return description.MD5
   }
 }
 
