@@ -4,7 +4,6 @@ import SwiftUI
 
 public struct TextTitleStyle: ViewModifier {
   public init() {}
-  
   public func body(content: Content) -> some View {
     content
       .font(.headline)
@@ -14,10 +13,27 @@ public struct TextTitleStyle: ViewModifier {
 
 public struct TextDescriptionStyle: ViewModifier {
   public init() {}
-
   public func body(content: Content) -> some View {
     content
-      .foregroundColor(Color(white: 0.1))
+      .foregroundColor(Color(white: 0.2))
+  }
+}
+
+public struct TextLightSmallStyle: ViewModifier {
+  public init() {}
+  public func body(content: Content) -> some View {
+    content
+      .foregroundColor(Color(white: 0.2))
+      .font(.system(size: 17))
+  }
+}
+
+public struct TextLightestSmallStyle: ViewModifier {
+  public init() {}
+  public func body(content: Content) -> some View {
+    content
+      .foregroundColor(Color(white: 0.45))
+      .font(.system(size: 15))
   }
 }
 
