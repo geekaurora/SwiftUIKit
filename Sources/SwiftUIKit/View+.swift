@@ -6,6 +6,24 @@ public extension View {
   func eraseToAnyView() -> AnyView {
     return AnyView(self)
   }
+  
+  /// Center self horizontally.
+  func centerHorizontally() -> AnyView {
+    HStack {
+      Spacer()
+      self
+      Spacer()
+    }.eraseToAnyView()
+  }
+  
+  /// Center self vertically.
+  func centerVertically() -> AnyView {
+    VStack {
+      Spacer()
+      self
+      Spacer()
+    }.eraseToAnyView()
+  }
 }
 
 /// Build `AnyView` with `View`.

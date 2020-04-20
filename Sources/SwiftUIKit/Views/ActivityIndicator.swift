@@ -8,9 +8,10 @@ import SwiftUI
  
  ```
  class FeedListState: ObservableObject {
- @Published var isLoading = false
+  @Published var isLoading = false
  }
- ActivityIndicator(style: .gray, isAnimating: $feedListState.isLoading)
+ ActivityIndicator(style: .gray, isAnimating: $modelListState.isLoading)
+  .centerHorizontally()
  ```
  */
 public struct ActivityIndicator: UIViewRepresentable {
