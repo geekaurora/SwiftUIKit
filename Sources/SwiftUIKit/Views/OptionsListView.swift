@@ -24,14 +24,13 @@ public struct OptionsListView: View {
           }
         }
       }
-    }
-    //.frame(height: 185)
+    }.padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
   }
 }
 
 public struct OptionsItemView: View {
-  static let normalColor: Color = .black
-  static let selectedColor: Color = .red
+  static let normalColor: Color = .init(white: 0.2)
+  static let selectedColor: Color = .init(red: 255.0/255.0, green: 80.0/255.0, blue: 80.0/255.0)
   private let text: String
   private let selected: Bool
   
@@ -44,7 +43,6 @@ public struct OptionsItemView: View {
   public var body: some View {
     let color = selected ? Self.selectedColor : Self.normalColor
     return Text(text)
-      //.frame(width: 100)
       .foregroundColor(color)
       .font(.headline)
   }
