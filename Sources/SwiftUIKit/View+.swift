@@ -7,7 +7,7 @@ public extension View {
     return AnyView(self)
   }
   
-  func lanscapeSupported() -> some View {
+  func supportsLanscape() -> some View {
     return self.navigationViewStyle(StackNavigationViewStyle())
   }
   
