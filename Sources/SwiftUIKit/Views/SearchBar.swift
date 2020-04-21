@@ -19,7 +19,8 @@ public struct SearchBar: UIViewRepresentable {
   private let onSearch: OnSearch
   private let onTextDidBeginEditing: OnTextDidBeginEditing?
   private let icon: UIImage?
-  
+  public private(set) var searchBar: UISearchBar!
+
   public init(icon: UIImage? = nil,
               onSearch: @escaping OnSearch,
               onTextDidBeginEditing: OnTextDidBeginEditing? = nil) {
