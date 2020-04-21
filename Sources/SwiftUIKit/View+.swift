@@ -7,6 +7,10 @@ public extension View {
     return AnyView(self)
   }
   
+  func lanscapeSupported() -> some View {
+    return self.navigationViewStyle(StackNavigationViewStyle())
+  }
+  
   /// Center self horizontally.
   func centerHorizontally() -> AnyView {
     HStack {
