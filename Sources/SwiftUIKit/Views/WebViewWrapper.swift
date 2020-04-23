@@ -11,7 +11,9 @@ public struct WebViewWrapper: View {
   }
   
   public var body: some View {
-    NavigationView {      
+    print("Load WebViewWrapper ...")
+    
+    return NavigationView {      
       VStack {
         WebView(webView: webViewStore.webView)
           .navigationBarTitle(Text(verbatim: webViewStore.webView.title ?? ""), displayMode: .inline)

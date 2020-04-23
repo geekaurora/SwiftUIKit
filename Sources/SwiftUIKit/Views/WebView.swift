@@ -18,6 +18,7 @@ public class WebViewStore: ObservableObject {
     func subscriber<Value>(for keyPath: KeyPath<WKWebView, Value>) -> NSKeyValueObservation {
       return webView.observe(keyPath, options: [.prior]) { _, change in
         if change.isPrior {
+          // Dispatches when property changes.
           self.objectWillChange.send()
         }
       }
@@ -25,13 +26,15 @@ public class WebViewStore: ObservableObject {
     // Setup observers for all KVO compliant properties
     observers = [
       //subscriber(for: \.title),
-      subscriber(for: \.url),
-      subscriber(for: \.isLoading),
-      subscriber(for: \.estimatedProgress),
-      subscriber(for: \.hasOnlySecureContent),
-      subscriber(for: \.serverTrust),
-      subscriber(for: \.canGoBack),
-      subscriber(for: \.canGoForward)
+//      subscriber(for: \.url),
+//      subscriber(for: \.isLoading),
+      
+//      subscriber(for: \.canGoBack),
+//      subscriber(for: \.canGoForward)
+//      subscriber(for: \.estimatedProgress),
+//      subscriber(for: \.hasOnlySecureContent),
+//      subscriber(for: \.serverTrust),
+
     ]
   }
   
@@ -39,8 +42,6 @@ public class WebViewStore: ObservableObject {
   
   deinit {
     observers.forEach {
-      // Not even sure if this is required?
-      // Probably wont be needed in future betas?
       $0.invalidate()
     }
   }
