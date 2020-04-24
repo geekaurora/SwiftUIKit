@@ -44,7 +44,7 @@ public struct WebViewWrapper: View {
       }
     }.onAppear {
       self.webViewStore.webView.load(URLRequest(url: self.url))
-    }.supportsLanscape()
+    }.lanscapeSupported()
   }
   
   func goBack() {
