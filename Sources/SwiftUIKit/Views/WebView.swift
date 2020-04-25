@@ -25,16 +25,15 @@ public class WebViewStore: ObservableObject {
     }
     // Setup observers for all KVO compliant properties
     observers = [
-      //subscriber(for: \.title),
+            subscriber(for: \.canGoBack),
+            subscriber(for: \.canGoForward)
+//
+//      subscriber(for: \.title),
 //      subscriber(for: \.url),
 //      subscriber(for: \.isLoading),
-      
-//      subscriber(for: \.canGoBack),
-//      subscriber(for: \.canGoForward)
 //      subscriber(for: \.estimatedProgress),
 //      subscriber(for: \.hasOnlySecureContent),
 //      subscriber(for: \.serverTrust),
-
     ]
   }
   
