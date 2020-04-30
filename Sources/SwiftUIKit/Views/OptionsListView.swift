@@ -31,6 +31,8 @@ public struct OptionsListView: View {
 public struct OptionsItemView: View {
   static let normalColor: Color = .init(white: 0.2)
   static let selectedColor: Color = .init(red: 255.0/255.0, green: 80.0/255.0, blue: 80.0/255.0)
+  static let selectedIndicatorColor: Color = .init(white: 0.3)
+  
   private let text: String
   private let selected: Bool
   
@@ -41,9 +43,23 @@ public struct OptionsItemView: View {
   }
   
   public var body: some View {
-    let color = selected ? Self.selectedColor : Self.normalColor
-    return Text(text)
-      .foregroundColor(color)
-      .font(.headline)
+    return
+      VStack(spacing: 8) {
+        Text(text)
+          .font(.headline)
+          .foregroundColor(Self.normalColor)
+          .fixedSize(horizontal: true, vertical: false)
+          .layoutPriority(1000)
+        
+        if (selected) {
+          Rectangle()
+            .foregroundColor(Self.selectedIndicatorColor)
+            .frame(height: 2)
+            .cornerRadius(1)
+            //.fixedSize(horizontal: false, vertical: false)
+            .layoutPriority(1000)
+        }
+        
+    }
   }
 }
