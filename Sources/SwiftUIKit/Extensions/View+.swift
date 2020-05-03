@@ -1,6 +1,8 @@
 import SwiftUI
 
-/// Convenience methods for `View` protocol.
+/**
+ Convenience methods for `View` protocol.
+*/
 public extension View {  
   /// Return `AnyView` by erasing the type of `self`.
   func eraseToAnyView() -> AnyView {
