@@ -40,6 +40,11 @@ public struct TextLightestSmallStyle: ViewModifier {
 // MARK: - Button
 
 /// Button style that makes button in Cell tappable.
+///
+/// - Note:
+/// Must use modifier `TappableButtonStyle`in Cell -  .buttonStyle(BorderlessButtonStyle()),
+/// otherwise Cell selection will always be triggered before Button action.
+///
 /// - Usage:
 /// Button().modifier(TappableButtonStyle())
 public struct TappableButtonStyle: ViewModifier {
