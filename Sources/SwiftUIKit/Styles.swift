@@ -17,7 +17,7 @@ public struct CapsuleStyle: ViewModifier {
   private let backgroundColor: Color
   
   public init(width: CGFloat = 125,
-              height: CGFloat = 30,
+              height: CGFloat = 25,
               foregroundColor: Color = .white,
               backgroundColor: Color = .secondLightGreen) {
     
@@ -124,6 +124,20 @@ public extension Image {
     )
   }
   
+  func portraitImageStyle(width: CGFloat = 25,
+                          height: CGFloat = 25,
+                          isCircleShape: Bool = true) -> AnyView {
+    let view = self
+      .resizable()
+      .frame(width: width, height: height)
+    
+    if isCircleShape {
+      return view.clipShape(Circle()).eraseToAnyView()
+    } else {
+      return view.eraseToAnyView()
+    }
+  }
+  
   func thumbnailStyle(size: CGSize = CGSize(width: 30, height: 30),
                       cornerRadius: CGFloat = 5,
                       isCircleShape: Bool = false) -> AnyView {
@@ -134,8 +148,7 @@ public extension Image {
     
     if isCircleShape {
       return view.clipShape(Circle()).eraseToAnyView()
-    }
-    else {
+    } else {
       return view.eraseToAnyView()
     }
   }
