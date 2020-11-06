@@ -1,7 +1,6 @@
 import SwiftUI
 
 public extension Color {
-    
   // MARK: Green
   
   static var firstLightGreen: Color {

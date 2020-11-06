@@ -36,6 +36,14 @@ public struct CapsuleStyle: ViewModifier {
   }
 }
 
+public struct FullWidthStyle: ViewModifier {
+  public init() {}
+  public func body(content: Content) -> some View {
+    content
+      .padding(.init(top: 0, leading: -20, bottom: 0, trailing: -20))
+  }
+}
+
 // MARK: - Text
 
 public struct TextTitleStyle: ViewModifier {
