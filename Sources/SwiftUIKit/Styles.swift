@@ -1,5 +1,41 @@
 import SwiftUI
 
+/**
+ ### Usage
+ 
+ ```
+ Text(title).modifier(TextTitleStyle())
+ ```
+ */
+
+// MARK: - Common
+
+public struct CapsuleStyle: ViewModifier {
+  private let width: CGFloat
+  private let height: CGFloat
+  private let foregroundColor: Color
+  private let backgroundColor: Color
+  
+  public init(width: CGFloat = 125,
+              height: CGFloat = 30,
+              foregroundColor: Color = .white,
+              backgroundColor: Color = .secondLightGreen) {
+    
+    self.width = width
+    self.height = height
+    self.foregroundColor = foregroundColor
+    self.backgroundColor = backgroundColor
+  }
+  
+  public func body(content: Content) -> some View {
+    content
+      .frame(width: width, height: height)
+      .foregroundColor(foregroundColor)
+      .background(backgroundColor)
+      .clipShape(Capsule())
+  }
+}
+
 // MARK: - Text
 
 public struct TextTitleStyle: ViewModifier {
@@ -7,6 +43,15 @@ public struct TextTitleStyle: ViewModifier {
   public func body(content: Content) -> some View {
     content
       .font(.headline)
+      .foregroundColor(Color(white: 0.1))
+  }
+}
+
+public struct TextSubtitleStyle: ViewModifier {
+  public init() {}
+  public func body(content: Content) -> some View {
+    content
+      .font(.subheadline)
       .foregroundColor(Color(white: 0.1))
   }
 }
@@ -59,15 +104,31 @@ public struct TappableButtonStyle: ViewModifier {
 // MARK: - Image
 
 public extension Image {
-  func feedImageStyle() -> AnyView {
+  func feedImageStyle(ratio: CGFloat = 1) -> AnyView {
     AnyView(
       self
         .resizable()
-        .aspectRatio(1, contentMode: .fit)
+        .aspectRatio(ratio, contentMode: .fit)
       //.frame(width: 300, height: 300)
       //.scaledToFit()
       //.scaledToFill()
       //.clipped()
     )
+  }
+  
+  func thumbnailStyle(size: CGSize = CGSize(width: 30, height: 30),
+                      cornerRadius: CGFloat = 5,
+                      isCircleShape: Bool = false) -> AnyView {
+    let view = self
+      .resizable()
+      .frame(width: size.width, height: size.height)
+      .cornerRadius(cornerRadius)
+    
+    if isCircleShape {
+      return view.clipShape(Circle()).eraseToAnyView()
+    }
+    else {
+      return view.eraseToAnyView()
+    }
   }
 }
