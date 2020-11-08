@@ -46,11 +46,38 @@ public struct FullWidthStyle: ViewModifier {
 
 // MARK: - Text
 
+public struct TextHeadlineStyle: ViewModifier {
+  public init() {}
+  public func body(content: Content) -> some View {
+    content
+      .font(.title3)
+      .foregroundColor(Color(white: 0.1))
+  }
+}
+
 public struct TextTitleStyle: ViewModifier {
   public init() {}
   public func body(content: Content) -> some View {
     content
       .font(.headline)
+      .foregroundColor(Color(white: 0.1))
+  }
+}
+
+public struct TextSecondTitleStyle: ViewModifier {
+  public init() {}
+  public func body(content: Content) -> some View {
+    content
+      .font(.system(size: 17, weight: .medium, design: .default))
+      .foregroundColor(Color(white: 0.1))
+  }
+}
+
+public struct TextSemiTitleStyle: ViewModifier {
+  public init() {}
+  public func body(content: Content) -> some View {
+    content
+      .font(.system(size: 16, weight: .medium, design: .default))
       .foregroundColor(Color(white: 0.1))
   }
 }
@@ -94,9 +121,11 @@ public struct TextLightestSmallStyle: ViewModifier {
 
 /// Button style that makes button in Cell tappable.
 ///
-/// - Note:
-/// Must use modifier `TappableButtonStyle`in Cell -  .buttonStyle(BorderlessButtonStyle()),
-/// otherwise Cell selection will always be triggered before Button action.
+/// ### Note:
+///  By default, Cell section triggers all button actions within the Cell.
+///
+/// - `TappableButtonStyle` prioritizes button tapping over Cell section, otherwise it's opposite.
+/// - `TappableButtonStyle` limits tappable area to size of button content.
 ///
 /// - Usage:
 /// Button().modifier(TappableButtonStyle())
@@ -117,7 +146,22 @@ public extension Image {
       self
         .resizable()
         .aspectRatio(ratio, contentMode: .fit)
+//        .frame(maxWidth: .infinity)
       //.frame(width: 300, height: 300)
+//      .scaledToFit()
+      //.scaledToFill()
+      //.clipped()
+    )
+  }
+  
+  func feedHorizontalImageStyle(width: CGFloat = 200,
+                                height: CGFloat = 200,
+                                cornerRadius: CGFloat = 30) -> AnyView {
+    AnyView(
+      self
+        .resizable()
+        .frame(width: width, height: height)
+        .cornerRadius(cornerRadius)
       //.scaledToFit()
       //.scaledToFill()
       //.clipped()
