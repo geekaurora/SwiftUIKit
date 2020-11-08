@@ -182,7 +182,7 @@ public extension Image {
     }
   }
   
-  func thumbnailStyle(size: CGSize = CGSize(width: 30, height: 30),
+  func thumbnailStyle(size: CGSize = CGSize(width: 35, height: 35),
                       cornerRadius: CGFloat = 5,
                       isCircleShape: Bool = false) -> AnyView {
     let view = self
