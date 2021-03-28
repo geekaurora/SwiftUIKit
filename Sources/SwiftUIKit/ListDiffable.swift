@@ -22,7 +22,8 @@ public extension ListDiffable where Self: Codable {
   /// In Codable extension, `description` returns `self` dictionary version corresponding to
   /// all member variables of `self`, which is efficient for diffing with respect to `self` property changes.
   var diffId: String {
-    return description.MD5
+    return descriptionSortedByKey.MD5
+//    return description.MD5
   }
 }
 
