@@ -7,6 +7,7 @@ import CZUtils
  ### Note
  - For instances which conforms to Identifiable protocol, `diffId` is implemented with `self.id`.
  - If the instance properties are changable, you should override `diffId` by combining `id` with the changable properties.
+   e.g. "\(feedId) | liked=\(liked)”
  
  ### Usage
  
@@ -48,7 +49,11 @@ public extension ListDiffable where Self: Codable {
 /// Protocol composed of `Codable` and `ListDiffable`.
 ///
 /// - Note:
+/// Model should conform to `Identifiable` if has no changable proerpty, otherwise override `diffId`
+/// by combining `id` with changable properties. e.g. "\(feedId) | liked=\(liked)”
 ///
-/// With `Coable` extension, `diffId` will be automatically implemented with the string retrived from all member
-/// variables of `self`, which is efficient for diffing with respect to `self` property changes.
+/// - Discussion:
+/// `diffId` doesn't depend on `Codable` as `description` calculation significantly impacts performance.
+///
+/// TODO: Remove `Codable` if no need.
 public typealias ListDiffCodable = Codable & ListDiffable
