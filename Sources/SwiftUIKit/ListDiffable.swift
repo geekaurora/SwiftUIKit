@@ -19,6 +19,8 @@ public protocol ListDiffable {
   typealias ID = Int
   
   /// Diffable id be used for List identifierable.
+  ///
+  /// - Note: All diffIds are called for each Cell update. time = N^2 (N = cellCount).
   var diffId: ID { get }
 }
 
