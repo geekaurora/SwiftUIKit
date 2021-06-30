@@ -15,7 +15,7 @@ import CZUtils
  `ForEach(feeds, id: \.diffId)`.
  */
 public protocol ListDiffable {
-  /// Type of the diffId. Defaults to Int.
+  /// Type of diffId. Defaults to Int.
   typealias ID = Int
   
   /// Diffable id be used for List identifierable.
@@ -29,13 +29,11 @@ public protocol ListDiffable {
  */
 public extension ListDiffable where Self: Identifiable {
   var diffId: ListDiffable.ID {
-    // dbgPrint("ListDiffable.diffId = \(self.id)")
-    
-    if let intId = self.id as? Int {
+    if let intId = id as? Int {
       return intId
     }
     assertionFailure("`self.id` should be Int to improve performance - all `diffId`s are called for each cell update. O(N^2)")
-    return self.id.hashValue
+    return id.hashValue
   }
 }
 
