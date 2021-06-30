@@ -15,17 +15,25 @@ import CZUtils
  `ForEach(feeds, id: \.diffId)`.
  */
 public protocol ListDiffable {
+  /// Type of diffId. Defaults to Int.
+  typealias ID = Int
+  
   /// Diffable id be used for List identifierable.
-  var diffId: String { get }
+  ///
+  /// - Note: All diffIds are called for each Cell update. time = N^2 (N = cellCount).
+  var diffId: ID { get }
 }
 
 /**
  Convenient implementation of ListDiffable if Self conforms Identifiable protocol.
  */
 public extension ListDiffable where Self: Identifiable {
-  var diffId: String {
-    assert(self.id is CustomStringConvertible, "self.id should conform CustomStringConvertible protocol.")
-    return String(describing:self.id)
+  var diffId: ListDiffable.ID {
+    if let intId = id as? Int {
+      return intId
+    }
+    assertionFailure("`self.id` should be Int to improve performance - all `diffId`s are called for each cell update. O(N^2)")
+    return id.hashValue
   }
 }
 
