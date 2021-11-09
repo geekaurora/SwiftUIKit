@@ -91,6 +91,14 @@ public struct TextSubtitleStyle: ViewModifier {
   }
 }
 
+public struct TextSubtitleLightStyle: ViewModifier {
+  public init() {}
+  public func body(content: Content) -> some View {
+    content
+      .opacity(0.5)
+  }
+}
+
 public struct TextDescriptionStyle: ViewModifier {
   public init() {}
   public func body(content: Content) -> some View {
