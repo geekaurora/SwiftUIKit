@@ -1,15 +1,18 @@
 import SwiftUI
 
+/// List view for the options selection.
 public struct OptionsListView: View {
   public typealias SelectedIndexChanged = (_ index: Int) -> Void
   
-  @State private var selectedIndex = 0
+  @State private var selectedIndex: Int
   private let selectedIndexChanged: SelectedIndexChanged?
   private let items: [String]
   
   public init(items: [String],
+              selectedIndex: Int = 0,
               selectedIndexChanged: SelectedIndexChanged? = nil) {
     self.items = items
+    self.selectedIndex = selectedIndex
     self.selectedIndexChanged = selectedIndexChanged
   }
   
