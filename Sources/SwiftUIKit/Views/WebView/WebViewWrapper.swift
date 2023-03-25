@@ -5,9 +5,12 @@ public struct WebViewWrapper: View {
   @ObservedObject var webViewStore = WebViewStore()
   @Environment(\.presentationMode) var presentationMode
   public var url: URL
-  
-  public init(url: URL) {
+  private let shouldOpenUrlInNewWindow: Bool
+
+  public init(url: URL,
+              shouldOpenUrlInNewWindow: Bool = false) {
     self.url = url
+    self.shouldOpenUrlInNewWindow = shouldOpenUrlInNewWindow
   }
   
   public var body: some View {
@@ -43,7 +46,11 @@ public struct WebViewWrapper: View {
           })
       }
     }.onAppear {
-      self.webViewStore.webView.load(URLRequest(url: self.url))
+      if shouldOpenUrlInNewWindow {
+        UIApplication.shared.open(self.url)
+      } else {
+        self.webViewStore.webView.load(URLRequest(url: self.url))
+      }
     }.lanscapeSupported()
   }
   
