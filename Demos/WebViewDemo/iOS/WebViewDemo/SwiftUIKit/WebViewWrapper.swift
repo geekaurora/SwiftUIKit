@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 public struct WebViewWrapper: View {
@@ -44,6 +45,18 @@ public struct WebViewWrapper: View {
       }
     }.onAppear {
       self.webViewStore.webView.load(URLRequest(url: self.url))
+
+      DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+
+        self.webViewStore.webView.evaluateJavaScript(
+          "document.body.innerHTML",
+          completionHandler: { (html: Any?, error: Error?) in
+            let htmlString = html as? String
+            print("htmlString = \(htmlString!)")
+            // completion(html as? String, error)
+          })
+
+      }
     }
     //.lanscapeSupported()
   }
