@@ -7,47 +7,48 @@ public struct WebViewWrapper: View {
   @Environment(\.presentationMode) var presentationMode
 
   public var url: URL
+  private var completion: Completion?
 
-  public init(url: URL) {
+  public init(url: URL,
+              completion: Completion? = nil) {
     self.url = url
+    self.completion = completion
   }
   
   public var body: some View {
     print("Load WebViewWrapper ...")
     
-    return NavigationView {      
+    return NavigationView {
       VStack {
         WebView(webView: webViewStore.webView)
-//          .navigationBarTitle(Text(verbatim: webViewStore.webView.title ?? ""), displayMode: .inline)
-//          .navigationBarItems(leading: HStack {
-//            Button(action: {
-//              self.presentationMode.wrappedValue.dismiss()
-//            }) {
-//              Image(systemName: "xmark")
-//                .imageScale(.large)
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 32, height: 32)
-//            }
-//            
-//            Button(action: goBack) {
-//              Image(systemName: "chevron.left")
-//                .imageScale(.large)
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 32, height: 32)
-//            }.disabled(!webViewStore.webView.canGoBack)
-//            
-//            Button(action: goForward) {
-//              Image(systemName: "chevron.right")
-//                .imageScale(.large)
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 32, height: 32)
-//            }.disabled(!webViewStore.webView.canGoForward)
-//          })
+        //          .navigationBarTitle(Text(verbatim: webViewStore.webView.title ?? ""), displayMode: .inline)
+        //          .navigationBarItems(leading: HStack {
+        //            Button(action: {
+        //              self.presentationMode.wrappedValue.dismiss()
+        //            }) {
+        //              Image(systemName: "xmark")
+        //                .imageScale(.large)
+        //                .aspectRatio(contentMode: .fit)
+        //                .frame(width: 32, height: 32)
+        //            }
+        //
+        //            Button(action: goBack) {
+        //              Image(systemName: "chevron.left")
+        //                .imageScale(.large)
+        //                .aspectRatio(contentMode: .fit)
+        //                .frame(width: 32, height: 32)
+        //            }.disabled(!webViewStore.webView.canGoBack)
+        //
+        //            Button(action: goForward) {
+        //              Image(systemName: "chevron.right")
+        //                .imageScale(.large)
+        //                .aspectRatio(contentMode: .fit)
+        //                .frame(width: 32, height: 32)
+        //            }.disabled(!webViewStore.webView.canGoForward)
+        //          })
       }
     }.onAppear {
-      self.load(URLRequest(url: self.url)) { htmlString in
-        print("htmlString = \(htmlString!)")
-      }
+      self.load(URLRequest(url: self.url), completion: self.completion)
     }
     //.lanscapeSupported()
   }
