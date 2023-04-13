@@ -13,14 +13,6 @@ struct ContentView: View {
         completion: { htmlString in
           print("htmlString = \(htmlString!)")
         })
-
-//        VStack {
-//            Image(systemName: "globe")
-//                .imageScale(.large)
-//                .foregroundColor(.accentColor)
-//            Text("Hello, world!")
-//        }
-//        .padding()
     }
 }
 
