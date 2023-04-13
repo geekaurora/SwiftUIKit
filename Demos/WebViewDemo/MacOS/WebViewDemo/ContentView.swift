@@ -8,9 +8,11 @@ import SwiftUIWebMac
  */
 struct ContentView: View {
     var body: some View {
-      WebViewWrapper(url: URL(string: "https://www.google.com")!)  { htmlString in
-        print("htmlString = \(htmlString!)")
-      }
+      WebViewWrapper(
+        url: URL(string: "https://www.google.com")!,
+        completion: { htmlString in
+          print("htmlString = \(htmlString!)")
+        })
 
 //        VStack {
 //            Image(systemName: "globe")
