@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF581B2129E8935F001F992D /* SwiftUIWebMac in Frameworks */ = {isa = PBXBuildFile; productRef = DF581B2029E8935F001F992D /* SwiftUIWebMac */; };
+		DF581B2229E8935F001F992D /* SwiftUIWebMac in Embed Frameworks */ = {isa = PBXBuildFile; productRef = DF581B2029E8935F001F992D /* SwiftUIWebMac */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		DF97923E29E87FAD001180D9 /* WebViewDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97923D29E87FAD001180D9 /* WebViewDemoApp.swift */; };
 		DF97924029E87FAD001180D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97923F29E87FAD001180D9 /* ContentView.swift */; };
 		DF97924229E87FAF001180D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF97924129E87FAF001180D9 /* Assets.xcassets */; };
@@ -14,8 +16,6 @@
 		DF97925029E87FB0001180D9 /* WebViewDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97924F29E87FB0001180D9 /* WebViewDemoTests.swift */; };
 		DF97925A29E87FB0001180D9 /* WebViewDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97925929E87FB0001180D9 /* WebViewDemoUITests.swift */; };
 		DF97925C29E87FB0001180D9 /* WebViewDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97925B29E87FB0001180D9 /* WebViewDemoUITestsLaunchTests.swift */; };
-		DF97927529E88245001180D9 /* WebViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97927329E88245001180D9 /* WebViewWrapper.swift */; };
-		DF97927629E88245001180D9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97927429E88245001180D9 /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +42,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				DF581B2229E8935F001F992D /* SwiftUIWebMac in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DF581B1F29E89357001F992D /* SwiftUIWebMac */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftUIWebMac; path = ../../../SwiftUIWebMac; sourceTree = "<group>"; };
 		DF97923A29E87FAD001180D9 /* WebViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF97923D29E87FAD001180D9 /* WebViewDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDemoApp.swift; sourceTree = "<group>"; };
 		DF97923F29E87FAD001180D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,8 +62,6 @@
 		DF97925529E87FB0001180D9 /* WebViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF97925929E87FB0001180D9 /* WebViewDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDemoUITests.swift; sourceTree = "<group>"; };
 		DF97925B29E87FB0001180D9 /* WebViewDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		DF97927329E88245001180D9 /* WebViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewWrapper.swift; sourceTree = "<group>"; };
-		DF97927429E88245001180D9 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF581B2129E8935F001F992D /* SwiftUIWebMac in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +93,7 @@
 		DF97923129E87FAD001180D9 = {
 			isa = PBXGroup;
 			children = (
+				DF581B1F29E89357001F992D /* SwiftUIWebMac */,
 				DF97923C29E87FAD001180D9 /* WebViewDemo */,
 				DF97924E29E87FB0001180D9 /* WebViewDemoTests */,
 				DF97925829E87FB0001180D9 /* WebViewDemoUITests */,
@@ -113,7 +115,6 @@
 		DF97923C29E87FAD001180D9 /* WebViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				DF97926E29E881B1001180D9 /* SwiftUIKit */,
 				DF97923F29E87FAD001180D9 /* ContentView.swift */,
 				DF97923D29E87FAD001180D9 /* WebViewDemoApp.swift */,
 				DF97924129E87FAF001180D9 /* Assets.xcassets */,
@@ -155,15 +156,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DF97926E29E881B1001180D9 /* SwiftUIKit */ = {
-			isa = PBXGroup;
-			children = (
-				DF97927429E88245001180D9 /* WebView.swift */,
-				DF97927329E88245001180D9 /* WebViewWrapper.swift */,
-			);
-			path = SwiftUIKit;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,6 +174,7 @@
 			);
 			name = WebViewDemo;
 			packageProductDependencies = (
+				DF581B2029E8935F001F992D /* SwiftUIWebMac */,
 			);
 			productName = WebViewDemo;
 			productReference = DF97923A29E87FAD001180D9 /* WebViewDemo.app */;
@@ -298,9 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF97924029E87FAD001180D9 /* ContentView.swift in Sources */,
-				DF97927629E88245001180D9 /* WebView.swift in Sources */,
 				DF97923E29E87FAD001180D9 /* WebViewDemoApp.swift in Sources */,
-				DF97927529E88245001180D9 /* WebViewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +643,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DF581B2029E8935F001F992D /* SwiftUIWebMac */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftUIWebMac;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DF97923229E87FAD001180D9 /* Project object */;
 }
