@@ -47,21 +47,21 @@ public class WebViewStore: ObservableObject {
 }
 
 /// A container for using a WKWebView in SwiftUI
-public struct WebView: View, UIViewRepresentable {
+public struct WebView: View, NSViewRepresentable {
   /// The WKWebView to display
   public let webView: WKWebView
   
-  public typealias UIViewType = UIViewContainerView<WKWebView>
+  public typealias NSViewType = NSViewContainerView<WKWebView>
   
   public init(webView: WKWebView) {
     self.webView = webView
   }
   
-  public func makeUIView(context: UIViewRepresentableContext<WebView>) -> WebView.UIViewType {
-    return UIViewContainerView()
+  public func makeNSView(context: NSViewRepresentableContext<WebView>) -> WebView.NSViewType {
+    return NSViewContainerView()
   }
   
-  public func updateUIView(_ uiView: WebView.UIViewType, context: UIViewRepresentableContext<WebView>) {
+  public func updateNSView(_ uiView: WebView.NSViewType, context: NSViewRepresentableContext<WebView>) {
     // If its the same content view we don't need to update.
           uiView.contentView = webView    
 //    if uiView.contentView !== webView {
@@ -70,8 +70,8 @@ public struct WebView: View, UIViewRepresentable {
   }
 }
 
-/// A UIView which simply adds some view to its view hierarchy
-public class UIViewContainerView<ContentView: UIView>: UIView {
+/// A NSView which simply adds some view to its view hierarchy
+public class NSViewContainerView<ContentView: NSView>: NSView {
   var contentView: ContentView? {
     willSet {
       contentView?.removeFromSuperview()
