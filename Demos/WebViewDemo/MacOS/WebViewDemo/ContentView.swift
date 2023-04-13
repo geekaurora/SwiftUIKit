@@ -1,16 +1,8 @@
-//
-//  ContentView.swift
-//  WebViewDemo
-//
-//  Created by Cheng Zhang on 2023/04/13.
-//
-
 import SwiftUI
-// import SwiftUIKit
 
 struct ContentView: View {
     var body: some View {
-      return WebViewWrapper(url: URL(string: "https://www.bluharborbywindsor.com/floorplans/a2-w")!)
+      return WebViewWrapper(url: URL(string: "https://www.google.com")!)
 
 //        VStack {
 //            Image(systemName: "globe")

@@ -1,10 +1,3 @@
-//
-//  WebViewDemoUITests.swift
-//  WebViewDemoUITests
-//
-//  Created by Cheng Zhang on 2023/04/13.
-//
-
 import XCTest
 
 final class WebViewDemoUITests: XCTestCase {
