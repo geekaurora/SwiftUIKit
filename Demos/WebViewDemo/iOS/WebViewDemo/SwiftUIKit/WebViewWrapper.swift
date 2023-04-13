@@ -55,8 +55,8 @@ public struct WebViewWrapper: View {
             print("htmlString = \(htmlString!)")
             // completion(html as? String, error)
           })
-
       }
+
     }
     //.lanscapeSupported()
   }
