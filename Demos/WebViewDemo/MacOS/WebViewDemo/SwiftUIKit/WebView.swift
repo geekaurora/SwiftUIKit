@@ -2,18 +2,37 @@ import SwiftUI
 import Combine
 import WebKit
 
-public class WebViewStore: ObservableObject {
+public class WebViewStore: NSObject, ObservableObject, WKNavigationDelegate {
   @Published public var webView: WKWebView {
     didSet {
       setupObservers()
     }
   }
-  
+
+  public typealias Completion = (WKNavigation) -> Void
+  private var observers: [NSKeyValueObservation] = []
+  private var completion: Completion?
+
   public init(webView: WKWebView = WKWebView()) {
     self.webView = webView
+    super.init()
+
+    self.webView.navigationDelegate = self
     setupObservers()
   }
-  
+
+  deinit {
+    observers.forEach {
+      $0.invalidate()
+    }
+  }
+
+  public func load(_ request: URLRequest,
+                   completion: Completion? = nil) {
+    self.completion = completion
+    webView.load(request)
+  }
+
   private func setupObservers() {
     func subscriber<Value>(for keyPath: KeyPath<WKWebView, Value>) -> NSKeyValueObservation {
       return webView.observe(keyPath, options: [.prior]) { _, change in
@@ -25,25 +44,32 @@ public class WebViewStore: ObservableObject {
     }
     // Setup observers for all KVO compliant properties
     observers = [
-            subscriber(for: \.canGoBack),
-            subscriber(for: \.canGoForward)
-//
-//      subscriber(for: \.title),
-//      subscriber(for: \.url),
-//      subscriber(for: \.isLoading),
-//      subscriber(for: \.estimatedProgress),
-//      subscriber(for: \.hasOnlySecureContent),
-//      subscriber(for: \.serverTrust),
+      subscriber(for: \.canGoBack),
+      subscriber(for: \.canGoForward)
+      //
+      //      subscriber(for: \.title),
+      //      subscriber(for: \.url),
+      //      subscriber(for: \.isLoading),
+      //      subscriber(for: \.estimatedProgress),
+      //      subscriber(for: \.hasOnlySecureContent),
+      //      subscriber(for: \.serverTrust),
     ]
   }
-  
-  private var observers: [NSKeyValueObservation] = []
-  
-  deinit {
-    observers.forEach {
-      $0.invalidate()
-    }
+
+  // MARK: - WKNavigationDelegate
+
+  public func webView(_ webView: WKWebView,
+               didFinish navigation: WKNavigation!) {
+    print("\n\(type(of: self)).\(#function)")
+    self.completion?(navigation)
   }
+
+
+  //  func webView(_ webView: WKWebView,
+  //               decidePolicyFor navigationAction: WKNavigationAction,
+  //               decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+  //    decisionHandler(.allow)
+  //  }
 }
 
 /// A container for using a WKWebView in SwiftUI
@@ -63,10 +89,10 @@ public struct WebView: View, NSViewRepresentable {
   
   public func updateNSView(_ uiView: WebView.NSViewType, context: NSViewRepresentableContext<WebView>) {
     // If its the same content view we don't need to update.
-          uiView.contentView = webView    
-//    if uiView.contentView !== webView {
-//      uiView.contentView = webView
-//    }
+    uiView.contentView = webView
+    //    if uiView.contentView !== webView {
+    //      uiView.contentView = webView
+    //    }
   }
 }
 
