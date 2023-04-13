@@ -1,11 +1,13 @@
 import SwiftUI
 
 public struct WebViewWrapper: View {
-  
+  public typealias Completion = (String?) -> Void
+
   @ObservedObject var webViewStore = WebViewStore()
   @Environment(\.presentationMode) var presentationMode
+
   public var url: URL
-  
+
   public init(url: URL) {
     self.url = url
   }
@@ -43,9 +45,22 @@ public struct WebViewWrapper: View {
 //          })
       }
     }.onAppear {
-      self.webViewStore.webView.load(URLRequest(url: self.url))
+      self.load(URLRequest(url: self.url)) { htmlString in
+        print("htmlString = \(htmlString!)")
+      }
     }
     //.lanscapeSupported()
+  }
+
+  func load(_ request: URLRequest, completion: Completion? = nil) {
+    self.webViewStore.load(request) { _ in
+      self.webViewStore.webView.evaluateJavaScript(
+        "document.body.innerHTML",
+        completionHandler: { (html: Any?, error: Error?) in
+          let htmlString = html as? String
+          completion?(htmlString)
+        })
+    }
   }
   
   func goBack() {

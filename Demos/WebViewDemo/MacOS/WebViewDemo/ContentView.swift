@@ -7,7 +7,7 @@ import SwiftUI
  */
 struct ContentView: View {
     var body: some View {
-      return WebViewWrapper(url: URL(string: "https://www.google.com")!)
+      WebViewWrapper(url: URL(string: "https://www.google.com")!)
 
 //        VStack {
 //            Image(systemName: "globe")
