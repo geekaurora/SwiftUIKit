@@ -3,7 +3,9 @@ import UIKit
 
 /**
  Bridging UIKit SearchBar to SwiftUI.
- 
+
+ - Note: For SwiftUI native experience, you may use `CZSearchBar`.
+
  ### Usage
  ```
  SearchBar(onSearch: { keyword in
@@ -12,19 +14,25 @@ import UIKit
  ```
  */
 public struct SearchBar: UIViewRepresentable {
-  public typealias OnSearch = (String?) -> Void
+  public typealias OnSearch = (String?, UISearchBar) -> Void
   public typealias OnTextDidBeginEditing = () -> Void
 
   //@Binding var text: String
   private let onSearch: OnSearch
   private let onTextDidBeginEditing: OnTextDidBeginEditing?
   private let icon: UIImage?
+  private let text: String?
+  private let placeholder: String?
   public private(set) var searchBar: UISearchBar!
 
   public init(icon: UIImage? = nil,
+              text: String? = nil,
+              placeholder: String? = nil,
               onSearch: @escaping OnSearch,
               onTextDidBeginEditing: OnTextDidBeginEditing? = nil) {
     self.icon = icon
+    self.text = text
+    self.placeholder = placeholder
     self.onSearch = onSearch
     self.onTextDidBeginEditing = onTextDidBeginEditing
   }
@@ -35,6 +43,8 @@ public struct SearchBar: UIViewRepresentable {
   
   public func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
     let searchBar = UISearchBar(frame: .zero)
+    searchBar.text = text
+    searchBar.placeholder = placeholder
     searchBar.delegate = context.coordinator
     return searchBar
   }
@@ -70,7 +80,7 @@ public struct SearchBar: UIViewRepresentable {
 
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
       searchBar.resignFirstResponder()
-      onSearch(searchBar.text)
+      onSearch(searchBar.text, searchBar)
     }
   }
 }
