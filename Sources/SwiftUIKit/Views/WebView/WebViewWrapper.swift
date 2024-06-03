@@ -1,7 +1,19 @@
 import SwiftUI
 
+/**
+ Wrapped web view for SwiftUI.
+
+ ### Usage
+
+ If you want to present modally,
+ ```
+ View
+ .sheet(isPresented: self.$modelListState.isPresentingModally) {
+   WebViewWrapper(url: feed.videoUrl)
+ }
+ ```
+ */
 public struct WebViewWrapper: View {
-  
   @ObservedObject var webViewStore = WebViewStore()
   @Environment(\.presentationMode) var presentationMode
   public var url: URL
