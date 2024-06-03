@@ -2,8 +2,10 @@ import UIKit
 import SwiftUI
 
 /**
- Wrap UIKit UIActivityIndicatorView into SwiftUI.
- 
+ Use SwiftUI `ProgressView` instead.
+
+ [Deprecated] Wrap UIKit UIActivityIndicatorView into SwiftUI.
+
  ### Usage
  
  ```
