@@ -1,5 +1,7 @@
 import SwiftUI
 
+// MARK: - Extension
+
 /**
  Convenience methods for `View` protocol.
 */
@@ -12,25 +14,48 @@ public extension View {
   func lanscapeSupported() -> some View {
     return self.navigationViewStyle(StackNavigationViewStyle())
   }
-  
-  /// Center self horizontally.
-  func centerHorizontally() -> AnyView {
+}
+
+// MARK: - Layout
+
+/// Convenience methods for the layout of View.
+extension View {
+  /// Aligns the leading to the parent.
+  public func alignLeadingToParent() -> some View {
+    HStack {
+      self
+      Spacer()
+    }
+  }
+
+  /// Aligns the trailing to the parent.
+  public func alignTrailingToParent() -> some View {
+    HStack {
+      Spacer()
+      self
+    }
+  }
+
+  /// Centers horizontally to the parent.
+  public func centerHorizontally() -> some View {
     HStack {
       Spacer()
       self
       Spacer()
-    }.eraseToAnyView()
+    }
   }
-  
-  /// Center self vertically.
-  func centerVertically() -> AnyView {
+
+  /// Centers vertically to the parent.
+  public func centerVertically() -> some View {
     VStack {
       Spacer()
       self
       Spacer()
-    }.eraseToAnyView()
+    }
   }
 }
+
+// MARK: - Others
 
 /// Build `AnyView` with `View`.
 public func anyView<V: View>(block: () -> V) -> AnyView {
