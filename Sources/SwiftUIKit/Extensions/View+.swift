@@ -20,6 +20,22 @@ public extension View {
 
 /// Convenience methods for the layout of View.
 extension View {
+  /// Aligns the top to the parent.
+  public func alignTopToParent() -> some View {
+    VStack {
+      self
+      Spacer()
+    }
+  }
+
+  /// Aligns the bottom to the parent.
+  public func alignBottomToParent() -> some View {
+    VStack {
+      Spacer()
+      self
+    }
+  }
+
   /// Aligns the leading to the parent.
   public func alignLeadingToParent() -> some View {
     HStack {
