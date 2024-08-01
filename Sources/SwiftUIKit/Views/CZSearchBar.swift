@@ -1,21 +1,29 @@
 import SwiftUI
 import CZUtils
 
-public struct CZSearchBar: View {
-  public typealias OnSubmit = (String) -> Void
+/// The customizable SwiftUI search bar.
+struct CZSearchBar: View {
+  typealias OnSubmit = (String) -> Void
 
-  @State private var text = ""
+  @State private var text: String = ""
   @FocusState var isFocused: Bool
-  private var isFocusedFromInitializer = false
+  @State private var isFocusedFromInitializer: Bool
   private let placeholder: String
-  private let onSubmit: OnSubmit
+  private let onSubmit: OnSubmit?
   private let disableAutocorrection: Bool
 
-  public init(placeholder: String = "",
-               text: String = "",
-               isFocused: Bool = false,
-               onSubmit: @escaping OnSubmit,
-               disableAutocorrection: Bool = true) {
+  private enum Constants {
+    static let updateFocusDelay = 0.6
+    static let backgroundColor = Color(red: 0.9450980424880981, green: 0.9529411792755127, blue: 0.95686274766922)
+  }
+
+  init(
+    placeholder: String = "",
+    text: String = "",
+    isFocused: Bool = false,
+    onSubmit: OnSubmit? = nil,
+    disableAutocorrection: Bool = true
+  ) {
     self.placeholder = placeholder
     self.text = text
     self.onSubmit = onSubmit
@@ -23,13 +31,13 @@ public struct CZSearchBar: View {
     self.isFocusedFromInitializer = isFocused
   }
 
-  public var body: some View {
+  var body: some View {
     return HStack(alignment: .center, spacing: 10) {
       Image(systemName: "magnifyingglass")
       TextField(self.placeholder, text: $text)
         .focused($isFocused)
         .onSubmit {
-          onSubmit(self.text)
+          onSubmit?(self.text)
         }
         .disableAutocorrection(self.disableAutocorrection)
 
@@ -42,12 +50,14 @@ public struct CZSearchBar: View {
       }
     }
     .onAppear {
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+      DispatchQueue.main.asyncAfter(deadline: .now() + Constants.updateFocusDelay) {
         self.isFocused = isFocusedFromInitializer
+        self.isFocusedFromInitializer = false
       }
     }
-    .padding(.init(top: 17, leading: 20, bottom: 17, trailing: 20))
-    .background(Color(red: 241.0/255.0, green: 243.0/255.0, blue: 244.0/255.0))
+    .padding(.vertical, 15)
+    .padding(.horizontal, 20)
+    .background(Constants.backgroundColor)
     .cornerRadius(34)
   }
 }
