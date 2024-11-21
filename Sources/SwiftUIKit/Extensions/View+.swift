@@ -6,7 +6,19 @@ import SwiftUI
  Convenience methods for `View` protocol.
 */
 public extension View {  
-  /// Return `AnyView` by erasing the type of `self`.
+  /**
+   Return `AnyView` by erasing the type of `self`.
+
+   - Note: This could be avoided by decorating your method with @ViewBuilder. e.g.
+   ```
+   @ViewBuilder
+   func imageView() -> some View {
+     if let image {
+       Image(uiImage: image)
+     }
+   }
+   ```
+  */
   func eraseToAnyView() -> AnyView {
     return AnyView(self)
   }
