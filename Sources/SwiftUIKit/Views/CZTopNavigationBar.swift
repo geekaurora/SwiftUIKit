@@ -26,6 +26,8 @@ public struct CZTopNavigationBar: View {
           presentationMode.wrappedValue.dismiss()
         }
     }
-    .padding(15)
+    .padding(.top, 15)
+    .padding(.bottom, 10)
+    .padding(.horizontal, 15)
   }
 }
